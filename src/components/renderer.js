@@ -23,6 +23,7 @@ export default class Renderer {
     threeRenderer.setSize(innerWidth, innerHeight);
 
     threeRenderer.shadowMap.enabled = true;
+    threeRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     return threeRenderer;
   }
