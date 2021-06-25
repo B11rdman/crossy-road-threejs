@@ -1,5 +1,5 @@
 {
-  "name": "three.js-es6-template",
+  "name": "crossy-road-threejs",
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/B11rdman/threejs-es6-template.git"
+    "url": "git+https://github.com/B11rdman/crossy-road-threejs.git"
   },
   "author": "Arsen Mazmanyan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/B11rdman/threejs-es6-template.git/issues"
+    "url": "https://github.com/B11rdman/crossy-road-threejs.git/issues"
   },
-  "homepage": "https://github.com/B11rdman/threejs-es6-template.git#readme",
+  "homepage": "https://github.com/B11rdman/crossy-road-threejs.git#readme",
   "devDependencies": {
     "@babel/cli": "^7.14.5",
     "@babel/core": "^7.14.6",
