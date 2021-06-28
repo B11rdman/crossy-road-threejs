@@ -26,6 +26,8 @@ export class Main {
 
     this._render();
 
+    this.onPointerUp = this.onPointerUp.bind(this);
+    this.onPointerDown = this.onPointerDown.bind(this);
     this._setEvents();
   }
 
@@ -38,44 +40,62 @@ export class Main {
   _setEvents() {
     this._handleResize();
     this._handlePointer();
+    this._handleKeyboard();
   }
 
   _handlePointer() {
-    window.addEventListener("pointerdown", this.onPointerDown.bind(this));
+    window.addEventListener("pointerdown", this.onPointerDown);
   }
 
   onPointerDown(pointerEvent) {
-    // const { x: downX, y: downY } = pointerEvent;
-    window.removeEventListener("pointerup", this.onPointerUp.bind(this, downX, downY), true);
-
-    // window.addEventListener("pointerup", (downX, downY, e) => {
-    //   const { x: upX, y: upY } = pointer;
-    //   let difX = upX - downX;
-    //   let difY = upY - downY;
-    //   // if (!this.pressed) {
-    //   if (difX > 0 && difX > difY) {
-    //     this.handleMove(1, 0);
-    //   } else if (difX < 0 && Math.abs(difX) >= Math.abs(difY)) {
-    //     this.handleMove(-1, 0);
-    //   } else if (difY > 0 && Math.abs(difX) < Math.abs(difY)) {
-    //     this.handleMove(0, 1);
-    //   } else if (difY < 0 && Math.abs(difX) <= Math.abs(difY)) {
-    //     this.handleMove(0, -1);
-    //   }
-    // });
+    const { x: downX, y: downY } = pointerEvent;
+    this._downX = downX;
+    this._downY = downY;
+    window.addEventListener("pointerup", this.onPointerUp);
   }
 
-  onPointerUp(downX, downY, pointer) {
-    this._removeEventListener(downX, downY);
+  onPointerUp(pointerEvent) {
+    window.removeEventListener("pointerup", this.onPointerUp);
+
+    const { x: upX, y: upY } = pointerEvent;
+    let difX = upX - this._downX;
+    let difY = upY - this._downY;
+    // if (!this.pressed) {
+    if (difX > 0 && difX > difY) {
+      this.handleMove("right");
+    } else if (difX < 0 && Math.abs(difX) >= Math.abs(difY)) {
+      this.handleMove("left");
+    } else if (difY > 0 && Math.abs(difX) < Math.abs(difY)) {
+      this.handleMove("backwards");
+    } else if (difY < 0 && Math.abs(difX) <= Math.abs(difY)) {
+      this.handleMove("forward");
+    }
   }
 
-  _removeEventListener(downX, downY) {
-    console.warn(window);
-    console.warn(this.onPointerUp.bind(this));
+  handleMove(direction) {
+    console.warn(direction);
   }
 
-  handleMove(a, b) {
-    console.warn(a, b);
+  _handleKeyboard() {
+    window.addEventListener("keydown", (KeyboardEvent) => {
+      switch (KeyboardEvent.key) {
+        case "ArrowUp":
+          this.handleMove("forward");
+          break;
+        case "ArrowDown":
+          this.handleMove("backward");
+          break;
+        case "ArrowLeft":
+          this.handleMove("left");
+          break;
+        case "ArrowRight":
+          this.handleMove("right");
+          break;
+
+        default:
+          break;
+      }
+    });
   }
 
   _handleResize() {
