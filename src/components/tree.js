@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { Config, pickRandom, ThreeHeights } from "../config";
 
-export default class ThreeItem extends THREE.Group {
+export default class Tree extends THREE.Group {
   constructor() {
     super();
 
@@ -18,7 +18,7 @@ export default class ThreeItem extends THREE.Group {
     const { zoom } = Config;
 
     const geom = new THREE.BoxBufferGeometry(15 * zoom, 15 * zoom, 20 * zoom);
-    const material = new THREE.MeshPhongMaterial({ color: 0x4d2926, flatShading: true });
+    const material = new THREE.MeshPhongMaterial({ color: 0x4d2926 });
     const body = new THREE.Mesh(geom, material);
 
     body.position.z = 10 * zoom;
@@ -31,11 +31,11 @@ export default class ThreeItem extends THREE.Group {
   _buildLeaves() {
     const { zoom } = Config;
 
-    const geom = new THREE.BoxBufferGeometry(30 * zoom, 30 * zoom, height * zoom);
-    const material = new THREE.MeshLambertMaterial({ color: 0x7aa21d, flatShading: true });
+    const geom = new THREE.BoxBufferGeometry(30 * zoom, 30 * zoom, this._height * zoom);
+    const material = new THREE.MeshLambertMaterial({ color: 0x7aa21d });
     const head = new THREE.Mesh(geom, material);
 
-    head.position.z = (height / 2 + 20) * zoom;
+    head.position.z = (this._height / 2 + 20) * zoom;
     head.castShadow = true;
     head.receiveShadow = false;
 

@@ -2,22 +2,44 @@ export function pickRandom(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-export const LanesConfig = [-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-export const VehicleColors = ["#a52523", "#ef2d56", "#0ad3ff", "#ff9f1c", "#a52523", "#bdb638", "#78b14b"];
-export const LaneTypes = ["car", "truck", "forest"];
-export const LaneSpeeds = [2, 2.5, 3];
-export const ThreeHeights = [20, 45, 60];
-
 export const Config = {
   distance: 500,
   zoom: 2,
   chickenSize: 15,
-  positionWidth: 42,
+  positionWidth: 32,
   columns: 17,
   stepTime: 200,
 };
 
+export const LaneType = {
+  Car: "car",
+  Truck: "truck",
+  Forest: "forest",
+  Field: "field",
+};
+
+export const LanesConfig = {
+  From: -18,
+  To: 15,
+};
+
+export const Move = {
+  Forward: "forward",
+  Backward: "backward",
+  Left: "left",
+  Right: "right",
+};
+
+export const CarsPerLane = 3;
+export const TrucksPerLane = 2;
+export const TreesPerLane = 2;
+
 export const BoardWidth = Config.positionWidth * Config.columns;
+
+export const VehicleColors = ["#a52523", "#ef2d56", "#0ad3ff", "#ff9f1c", "#a52523", "#bdb638", "#78b14b"];
+export const LaneTypes = [LaneType.Car, LaneType.Truck, LaneType.Forest];
+export const LaneSpeeds = [1, 1.5, 2];
+export const ThreeHeights = [30, 40, 50];
 
 export const CarTextureConfig = {
   face: {

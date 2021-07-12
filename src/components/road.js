@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import Config from "../config";
+import { BoardWidth, Config } from "../config";
 
 export default class Road extends THREE.Group {
   constructor() {
@@ -13,7 +13,7 @@ export default class Road extends THREE.Group {
     this.add((this._left = this._getLeftSection()));
     this.add((this._right = this._getRightSection()));
 
-    this.position.z = 1.5 * zoom;
+    this.position.z = 1.5 * Config.zoom;
   }
 
   _getMiddleSection() {
@@ -25,14 +25,14 @@ export default class Road extends THREE.Group {
 
   _getLeftSection() {
     const left = this._createSection(0x393d49);
-    left.position.x = -BoardWidth * zoom;
+    left.position.x = -BoardWidth * Config.zoom;
 
     return left;
   }
 
   _getRightSection() {
     const right = this._createSection(0x393d49);
-    right.position.x = BoardWidth * zoom;
+    right.position.x = BoardWidth * Config.zoom;
 
     return right;
   }

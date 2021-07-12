@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 
+body,
+html {
+  touch-action: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -48,7 +53,7 @@ button {
   font-size: inherit;
 }
 
-#controlls {
+#controls {
   position: absolute;
   min-width: 100%;
   min-height: 100%;
@@ -57,7 +62,7 @@ button {
   justify-content: center;
 }
 
-#controlls div {
+#controls div {
   display: grid;
   grid-template-columns: 50px 50px 50px;
   grid-template-rows: auto auto;
@@ -66,12 +71,12 @@ button {
   margin-bottom: 20px;
 }
 
-#controlls button {
+#controls button {
   width: 100%;
   background-color: white;
   border: 1px solid lightgray;
 }
 
-#controlls button:first-of-type {
+#controls button:first-of-type {
   grid-column: 1/-1;
 }
