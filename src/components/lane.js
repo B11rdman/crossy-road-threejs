@@ -3,11 +3,13 @@ import {
   BoardWidth,
   CarsPerLane,
   Config,
+  EndLine,
   LaneSpeeds,
   LaneType,
   LaneTypes,
   pickRandom,
   PositionWidth,
+  StartLine,
   TreesPerLane,
   TrucksPerLane,
 } from "../config";
@@ -30,17 +32,13 @@ export default class Lane extends THREE.Group {
   }
 
   animateVehicle() {
-    const { zoom } = Config;
-    const startLine = (-BoardWidth * zoom) / 2 - PositionWidth * 2 * zoom;
-    const endLine = (BoardWidth * zoom) / 2 + PositionWidth * 2 * zoom;
-
     this.vehicles.forEach((v) => {
       if (this._direction) {
         v.position.x += this._speed;
-        v.position.x > endLine && (v.position.x = startLine);
+        v.position.x > EndLine && (v.position.x = StartLine);
       } else {
         v.position.x -= this._speed;
-        v.position.x < startLine && (v.position.x = endLine);
+        v.position.x < StartLine && (v.position.x = EndLine);
       }
     });
   }

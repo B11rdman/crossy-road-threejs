@@ -27,7 +27,7 @@ export default class Camera {
     const initialCameraPositionY = -Math.tan(camera.rotation.x) * distance;
     const initialCameraPositionX = Math.tan(camera.rotation.y) * Math.sqrt(distance ** 2 + initialCameraPositionY ** 2);
 
-    camera.position.set(initialCameraPositionX, initialCameraPositionY, distance);
+    camera.position.set(initialCameraPositionX, initialCameraPositionY, distance + 200);
 
     return camera;
   }

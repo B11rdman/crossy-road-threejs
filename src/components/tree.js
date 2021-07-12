@@ -10,13 +10,12 @@ export default class Tree extends THREE.Group {
   }
 
   _build() {
-    this._buildBody();
-    this._buildLeaves();
+    const { zoom } = Config;
+    this._buildBody(zoom);
+    this._buildLeaves(zoom);
   }
 
-  _buildBody() {
-    const { zoom } = Config;
-
+  _buildBody(zoom) {
     const geom = new THREE.BoxBufferGeometry(15 * zoom, 15 * zoom, 20 * zoom);
     const material = new THREE.MeshPhongMaterial({ color: 0x4d2926 });
     const body = new THREE.Mesh(geom, material);
@@ -28,9 +27,7 @@ export default class Tree extends THREE.Group {
     this.add((this._body = body));
   }
 
-  _buildLeaves() {
-    const { zoom } = Config;
-
+  _buildLeaves(zoom) {
     const geom = new THREE.BoxBufferGeometry(30 * zoom, 30 * zoom, this._height * zoom);
     const material = new THREE.MeshLambertMaterial({ color: 0x7aa21d });
     const head = new THREE.Mesh(geom, material);

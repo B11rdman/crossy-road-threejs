@@ -4,7 +4,7 @@ export function pickRandom(arr) {
 
 export const Config = {
   distance: 500,
-  zoom: 2,
+  zoom: 1.25,
   chickenSize: 15,
   columns: 17,
   stepTime: 200,
@@ -40,6 +40,9 @@ export const VehicleColors = ["#a52523", "#ef2d56", "#0ad3ff", "#ff9f1c", "#a525
 export const LaneTypes = [LaneType.Car, LaneType.Truck, LaneType.Forest];
 export const LaneSpeeds = [1, 1.5, 2, 2.5, 3];
 export const ThreeHeights = [30, 40, 50];
+
+export const StartLine = (-BoardWidth * Config.zoom) / 2 - PositionWidth * 2 * Config.zoom;
+export const EndLine = (BoardWidth * Config.zoom) / 2 + PositionWidth * 2 * Config.zoom;
 
 export const CarTextureConfig = {
   face: {

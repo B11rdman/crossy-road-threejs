@@ -5,7 +5,7 @@ import Lane from "./components/lane";
 import Light from "./components/light";
 import Plane from "./components/plane";
 import Renderer from "./components/renderer";
-import { Config, LanesConfig, Move, PositionWidth } from "./config";
+import { Config, EndLine, LanesConfig, Move, PositionWidth, StartLine } from "./config";
 
 export class Main {
   constructor(container) {
@@ -117,9 +117,35 @@ export class Main {
   }
 
   _handleMove(direction) {
-    console.warn(direction);
-  }
+    const { zoom } = Config;
+    switch (direction) {
+      case Move.Forward:
+        this.chick.position.y += PositionWidth * zoom;
+        this.camera.threeCamera.position.y += PositionWidth * zoom;
+        break;
+      case Move.Backward:
+        if (this.chick.position.y >= 0) {
+          this.chick.position.y -= PositionWidth * zoom;
+          this.camera.threeCamera.position.y -= PositionWidth * zoom;
+        }
+        break;
+      case Move.Left:
+        if (this.chick.position.x >= StartLine) {
+          this.chick.position.x -= PositionWidth * zoom;
+          this.camera.threeCamera.position.x -= PositionWidth * zoom;
+        }
+        break;
+      case Move.Right:
+        if (this.chick.position.x <= EndLine) {
+          this.chick.position.x += PositionWidth * zoom;
+          this.camera.threeCamera.position.x += PositionWidth * zoom;
+        }
+        break;
 
+      default:
+        break;
+    }
+  }
   _handleResize() {
     window.addEventListener("resize", () => {
       const { cameraWidth } = this.camera.threeCamera;
