@@ -6,10 +6,10 @@ export const Config = {
   distance: 500,
   zoom: 2,
   chickenSize: 15,
-  positionWidth: 32,
   columns: 17,
   stepTime: 200,
 };
+export const PositionWidth = 42 * Config.zoom;
 
 export const LaneType = {
   Car: "car",
@@ -34,11 +34,11 @@ export const CarsPerLane = 3;
 export const TrucksPerLane = 2;
 export const TreesPerLane = 2;
 
-export const BoardWidth = Config.positionWidth * Config.columns;
+export const BoardWidth = PositionWidth * Config.columns;
 
 export const VehicleColors = ["#a52523", "#ef2d56", "#0ad3ff", "#ff9f1c", "#a52523", "#bdb638", "#78b14b"];
 export const LaneTypes = [LaneType.Car, LaneType.Truck, LaneType.Forest];
-export const LaneSpeeds = [1, 1.5, 2];
+export const LaneSpeeds = [1, 1.5, 2, 2.5, 3];
 export const ThreeHeights = [30, 40, 50];
 
 export const CarTextureConfig = {

@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { BoardWidth, Config } from "../config";
+import { BoardWidth, Config, PositionWidth } from "../config";
 
 export default class Road extends THREE.Group {
   constructor() {
@@ -38,9 +38,9 @@ export default class Road extends THREE.Group {
   }
 
   _createSection(color) {
-    const { zoom, positionWidth } = Config;
+    const { zoom } = Config;
 
-    const geom = new THREE.PlaneBufferGeometry(BoardWidth * zoom, positionWidth * zoom);
+    const geom = new THREE.PlaneBufferGeometry(BoardWidth * zoom, PositionWidth * zoom);
     const material = new THREE.MeshPhongMaterial({ color });
     const section = new THREE.Mesh(geom, material);
 

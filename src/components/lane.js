@@ -7,6 +7,7 @@ import {
   LaneType,
   LaneTypes,
   pickRandom,
+  PositionWidth,
   TreesPerLane,
   TrucksPerLane,
 } from "../config";
@@ -29,9 +30,9 @@ export default class Lane extends THREE.Group {
   }
 
   animateVehicle() {
-    const { zoom, positionWidth } = Config;
-    const startLine = (-BoardWidth * zoom) / 2 - positionWidth * 2 * zoom;
-    const endLine = (BoardWidth * zoom) / 2 + positionWidth * 2 * zoom;
+    const { zoom } = Config;
+    const startLine = (-BoardWidth * zoom) / 2 - PositionWidth * 2 * zoom;
+    const endLine = (BoardWidth * zoom) / 2 + PositionWidth * 2 * zoom;
 
     this.vehicles.forEach((v) => {
       if (this._direction) {
@@ -106,7 +107,7 @@ export default class Lane extends THREE.Group {
   }
 
   _getElements(type) {
-    const { columns, positionWidth, zoom } = Config;
+    const { columns, zoom } = Config;
     let element = null;
     let position = null;
 
@@ -130,7 +131,7 @@ export default class Lane extends THREE.Group {
     } while (this._occupiedPositions.has(position));
 
     this._occupiedPositions.add(position);
-    element.position.x = (position * positionWidth * 2 + positionWidth / 2) * zoom - (BoardWidth * zoom) / 2;
+    element.position.x = (position * PositionWidth * 2 + PositionWidth / 2) * zoom - (BoardWidth * zoom) / 2;
 
     return element;
   }

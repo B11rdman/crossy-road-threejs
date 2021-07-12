@@ -5,7 +5,7 @@ import Lane from "./components/lane";
 import Light from "./components/light";
 import Plane from "./components/plane";
 import Renderer from "./components/renderer";
-import { Config, LanesConfig, Move } from "./config";
+import { Config, LanesConfig, Move, PositionWidth } from "./config";
 
 export class Main {
   constructor(container) {
@@ -46,11 +46,11 @@ export class Main {
   }
 
   _generateLanes() {
-    const { positionWidth, zoom } = Config;
+    const { zoom } = Config;
     const lanes = [];
     for (let i = LanesConfig.From; i < LanesConfig.To; i += 1) {
       const lane = new Lane(i);
-      lane.mesh.position.y = i * positionWidth * zoom;
+      lane.mesh.position.y = i * PositionWidth * zoom;
       this.scene.add(lane.mesh);
       lanes.push(lane);
     }
